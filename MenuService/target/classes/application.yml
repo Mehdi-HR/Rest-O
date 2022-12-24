@@ -1,0 +1,14 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: menu
+
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      database: menu
+      password: rootpass
+      port: 30001
+      host: localhost
