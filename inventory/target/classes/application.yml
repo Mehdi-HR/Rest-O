@@ -1,14 +1,13 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   application:
-    name: menu
-
+    name: inventory
   data:
     mongodb:
       authentication-database: admin
       username: rootuser
-      database: menu
+      database: inventory
       password: rootpass
       port: 30001
       host: localhost

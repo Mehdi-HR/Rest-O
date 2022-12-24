@@ -7,8 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="menu" />
+        <module name="inventory" />
+        <module name="eureka-server" />
         <module name="MenuService" />
-        <module name="InventoryService" />
       </profile>
     </annotationProcessing>
   </component>
