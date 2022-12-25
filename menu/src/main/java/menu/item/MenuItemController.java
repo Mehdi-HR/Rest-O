@@ -35,7 +35,7 @@ public record MenuItemController(MenuItemService menuItemService) {
     }
 
     @PutMapping("/{id}/update")
-    public void update(@PathVariable long id, @RequestBody MenuItemDTO newItem) {
+    public void update(@PathVariable Long id, @RequestBody MenuItemDTO newItem) {
         log.info("Updating menu item {}.", id);
         menuItemService.update(id, newItem);
     }

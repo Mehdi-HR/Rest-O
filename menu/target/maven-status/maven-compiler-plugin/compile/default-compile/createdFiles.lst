@@ -1,0 +1,11 @@
+menu\sequence\MenuItemListener.class
+menu\item\MenuItemDTO.class
+menu\sequence\DatabaseSequence.class
+menu\item\MenuItem$MenuItemBuilder.class
+menu\item\MenuItemController.class
+menu\item\MenuItemRepository.class
+menu\item\MenuItemConfiguration.class
+menu\sequence\SequenceGeneratorService.class
+menu\item\MenuItemService.class
+menu\item\MenuItem.class
+menu\MenuApplication.class
