@@ -1,5 +1,6 @@
 package menu.item;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -37,6 +38,7 @@ public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplat
         }
     }
 
+    @CircuitBreaker(name = "CircuitBreakerService", fallbackMethod = "defaultCost")
     public double getCost(Long id) {
         var optionalMenuItem = menuItemRepository.findById(id);
         if (optionalMenuItem.isPresent()) {
@@ -50,5 +52,9 @@ public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplat
             }
             return totalCost;
         } else return 0;
+    }
+
+    public double defaultCost(Long id) {
+        return -1;
     }
 }
