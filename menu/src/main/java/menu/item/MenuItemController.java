@@ -28,6 +28,12 @@ public record MenuItemController(MenuItemService menuItemService) {
         return menuItemService.getCost(id);
     }
 
+    @GetMapping("{id}/price")
+    public double getPrice(@PathVariable Long id) {
+        log.info("Showing menu item's price {}.", id);
+        return menuItemService.getPrice(id);
+    }
+
     @PostMapping("/add")
     public void addMenuItem(@RequestBody MenuItemDTO newItem) {
         log.info("Adding new item to the menu.");
@@ -39,11 +45,5 @@ public record MenuItemController(MenuItemService menuItemService) {
         log.info("Updating menu item {}.", id);
         menuItemService.update(id, newItem);
     }
-
-    /*
-    @PatchMapping("/{id}/add-ingredient")
-    public void increase(@PathVariable long id, @RequestParam String ref, @RequestParam int quantity) {
-        menuItemService.addIngredient(id, ref, quantity);
-    }*/
 
 }

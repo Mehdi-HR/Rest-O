@@ -1,9 +1,9 @@
-package menu.sequence;
+package orders.sequence;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "database_sequences")
+@Document(collection = "database_sequences2")
 public class DatabaseSequence {
 
     @Id

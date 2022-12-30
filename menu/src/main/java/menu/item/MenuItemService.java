@@ -57,4 +57,9 @@ public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplat
     public double defaultCost(Long id) {
         return -1;
     }
+
+    public double getPrice(Long id) {
+        var optional = menuItemRepository.findById(id);
+        return optional.map(MenuItem::getPriceDH).orElse(0.0);
+    }
 }

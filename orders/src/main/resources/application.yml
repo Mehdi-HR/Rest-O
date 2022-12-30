@@ -1,0 +1,31 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: orders
+
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      database: orders
+      password: rootpass
+      port: 30001
+      host: localhost
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      CircuitBreakerService:
+        sliding-window-size: '10'
+        minimum-number-of-calls: '5'
+        permitted-number-of-calls-in-half-open-state: '3'
+        failure-rate-threshold: '50'
+        wait-duration-in-open-state: 5s
+        sliding-window-type: count_based
+        automatic-transition-from-open-to-half-open-enabled: 'true'
+

@@ -12,6 +12,7 @@
         <module>inventory</module>
         <module>menu</module>
         <module>eureka-server</module>
+        <module>orders</module>
     </modules>
 
     <properties>

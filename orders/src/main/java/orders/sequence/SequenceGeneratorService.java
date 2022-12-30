@@ -1,4 +1,4 @@
-package menu.sequence;
+package orders.sequence;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
