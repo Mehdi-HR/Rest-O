@@ -29,3 +29,27 @@ resilience4j:
         sliding-window-type: count_based
         automatic-transition-from-open-to-half-open-enabled: 'true'
 
+  retry:
+    metrics:
+      legacy:
+        enabled: 'true'
+      enabled: 'true'
+    instances:
+      retryApi:
+        max-attempts: '3'
+        wait-duration: 1s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    circuitbreakers:
+      enabled: 'true'
+    ratelimiters:
+      enabled: 'true'
+  endpoint:
+    health:
+      show-details: always
+

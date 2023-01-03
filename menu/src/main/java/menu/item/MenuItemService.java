@@ -1,13 +1,11 @@
 package menu.item;
 
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
-public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplate restTemplate) {
+public record MenuItemService(MenuItemRepository menuItemRepository,ProductUnitCostProxy unitCostProxy ) {
     public List<MenuItem> list() {
         return menuItemRepository.findAll();
     }
@@ -38,7 +36,6 @@ public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplat
         }
     }
 
-    @CircuitBreaker(name = "CircuitBreakerService", fallbackMethod = "defaultCost")
     public double getCost(Long id) {
         var optionalMenuItem = menuItemRepository.findById(id);
         if (optionalMenuItem.isPresent()) {
@@ -47,15 +44,11 @@ public record MenuItemService(MenuItemRepository menuItemRepository, RestTemplat
             for (var entry:item.getIngredients().entrySet()) {
                 var ref = entry.getKey();
                 var quantity = entry.getValue();
-                var unitCost = restTemplate.getForObject("http://INVENTORY/api/v1/inventory/{ref}/cost",Double.class, ref);
+                Double unitCost = unitCostProxy.getUnitCost(ref);
                 totalCost += unitCost * quantity;
             }
             return totalCost;
         } else return 0;
-    }
-
-    public double defaultCost(Long id) {
-        return -1;
     }
 
     public double getPrice(Long id) {
