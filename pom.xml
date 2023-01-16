@@ -13,6 +13,7 @@
         <module>menu</module>
         <module>eureka-server</module>
         <module>orders</module>
+        <module>hr</module>
     </modules>
 
     <properties>

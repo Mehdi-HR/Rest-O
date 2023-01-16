@@ -8,11 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="orders" />
+        <module name="hr" />
         <module name="inventory" />
         <module name="menu" />
         <module name="eureka-server" />
         <module name="MenuService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="employees" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
